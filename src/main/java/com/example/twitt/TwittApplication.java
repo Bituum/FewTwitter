@@ -8,11 +8,17 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(scanBasePackages =
-        {"com.example.twitt.controller", "com.example.twitt.config"},
-        exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+        {
+                "com.example.twitt.controller",
+                "com.example.twitt.config",
+                "com.example.twitt.entity",
+                "com.example.twitt.repository",
+                "com.example.twitt.service",
+                "com.example.twitt.util"
+        })
 public class TwittApplication {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         SpringApplication.run(TwittApplication.class, args);
     }
 

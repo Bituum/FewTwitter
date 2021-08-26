@@ -11,4 +11,9 @@ public class FirstController {
         return "hello";
     }
 
+    @GetMapping("/second")
+    public String second(){
+        return "hello";
+    }
+
 }
