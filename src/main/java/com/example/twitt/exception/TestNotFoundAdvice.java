@@ -1,4 +1,4 @@
-package com.example.twitt.util;
+package com.example.twitt.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

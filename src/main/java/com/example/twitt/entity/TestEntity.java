@@ -24,5 +24,4 @@ public class TestEntity {
     @Basic
     @NotBlank(message = "department should be filled")
     private String department;
-
 }

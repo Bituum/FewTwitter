@@ -2,13 +2,11 @@ package com.example.twitt.service;
 
 import com.example.twitt.entity.TestEntity;
 import com.example.twitt.repository.TestRepository;
-import com.example.twitt.util.TestNotFoundException;
+import com.example.twitt.exception.TestNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class TestServiceImpl implements TestService{

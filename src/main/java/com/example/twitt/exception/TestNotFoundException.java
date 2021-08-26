@@ -1,6 +1,4 @@
-package com.example.twitt.util;
-
-import lombok.NoArgsConstructor;
+package com.example.twitt.exception;
 
 public class TestNotFoundException extends RuntimeException{
     public TestNotFoundException(int id){
