@@ -6,7 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,12 +23,14 @@ public class MainUser {
 
     @Basic
     @NotNull
-    @Column(name = "login", length = 255)
+    @Size(max = 255)
+    @Column(name = "login")
     private String login;
 
     @Basic
     @NotNull
-    @Column(name = "password", length = 50)
+    @Size(max = 50)
+    @Column(name = "password")
     private String password;
 
     @ManyToMany
@@ -40,4 +44,13 @@ public class MainUser {
             )
     )
     private Set<Roles> role;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private UserExtension extension;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<UserPost> userPostList;
+    @OneToMany()
+    private List<Photos> photos;
 }

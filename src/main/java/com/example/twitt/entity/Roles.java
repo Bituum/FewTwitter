@@ -1,21 +1,31 @@
 package com.example.twitt.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
 @Table(name = "roles", schema = "public", catalog = "d2rs1nv1iqngad")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Roles {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Basic
-    @Column(name = "role", length = 10)
+    @Size(max = 10)
+    @Column(name = "role")
     private String role;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user-roles",
             joinColumns = @JoinColumn(
