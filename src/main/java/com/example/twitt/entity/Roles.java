@@ -3,6 +3,7 @@ package com.example.twitt.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Roles {
+public class Roles implements GrantedAuthority {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +38,8 @@ public class Roles {
     )
     private List<MainUser> users;
 
+    @Override
+    public String getAuthority() {
+        return getRole();
+    }
 }

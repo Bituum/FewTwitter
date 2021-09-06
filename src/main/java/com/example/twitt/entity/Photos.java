@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 public class Photos {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "photoPath")
@@ -22,5 +23,10 @@ public class Photos {
     private String photoPath;
 
     @ManyToOne
+    @JoinColumn(
+            name = "id",
+            updatable = false,
+            insertable = false
+    )
     private MainUser user;
 }
