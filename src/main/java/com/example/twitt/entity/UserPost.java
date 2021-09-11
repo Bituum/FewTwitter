@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "posts")
@@ -19,10 +18,10 @@ public class UserPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "commentSection")
+    @Column(name = "comment_section")
     private String commentSection;
 
-    @Column(name = "ImagePath")
+    @Column(name = "image_path")
     private String ImagePath;
 
     @ManyToOne(fetch = FetchType.LAZY)

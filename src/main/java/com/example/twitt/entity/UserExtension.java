@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "userExtension")
+@Table(name = "user_extension")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class UserExtension {
     @Size(max = 255)
     private String name;
 
-    @Column(name = "secondName")
+    @Column(name = "second_name")
     @Size(max = 255)
     private String secondName;
 
