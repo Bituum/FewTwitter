@@ -1,8 +1,10 @@
 package com.example.twitt.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -18,11 +20,12 @@ public class Photos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "photoPath")
+    @Column(name = "photo_path")
     @Size(max = 255)
     private String photoPath;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(
             name = "id",
             updatable = false,

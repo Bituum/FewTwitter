@@ -1,7 +1,9 @@
 package com.example.twitt.service;
 
 import com.example.twitt.entity.MainUser;
+import com.example.twitt.entity.Roles;
 import com.example.twitt.exception.UsernameIsTakenException;
+import com.example.twitt.repository.RolesRepository;
 import com.example.twitt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,8 +12,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -19,20 +23,28 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements CRUDService<MainUser>, UserDetailsService {
+    @Autowired
     private final UserRepository repository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
     }
 
+    @Autowired
+    private RolesRepository rolesRepository;
+
     @Override
     public MainUser addOne(MainUser user) {
-        if(repository.findByLogin(user.getLogin())){
-            throw new UsernameIsTakenException("Username is already been taken: " + user.getLogin());
+        if(checkLogin(user.getLogin())){
+            throw new UsernameIsTakenException("username "+user.getUsername() + " is already been taken!");
         }
-
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        Set<Roles> roleSet = new HashSet<>();
+        roleSet.add(rolesRepository.getById(1));
+        user.setRoles(roleSet);
         repository.save(user);
         return user;
     }
@@ -74,7 +86,10 @@ public class UserServiceImpl implements CRUDService<MainUser>, UserDetailsServic
             );
         }
         return null;
+    }
 
-
+    private boolean checkLogin(String login){
+        Optional<MainUser> user = repository.findMainUsersByLogin(login);
+        return user.isPresent();
     }
 }

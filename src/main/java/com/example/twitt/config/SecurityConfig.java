@@ -25,20 +25,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/user").hasAuthority("USER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .and()
-                .logout()
+                .antMatchers("/")
                 .permitAll()
                 .and()
-                .cors()
-                .and()
-                .httpBasic()
-                .and()
-                .csrf().disable();
+                .csrf()
+                .disable();
+//                .authorizeRequests()
+//                .antMatchers("/user").hasAuthority("USER")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .and()
+//                .cors()
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .csrf().disable();
+
 
     }
 

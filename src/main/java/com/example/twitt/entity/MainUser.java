@@ -1,8 +1,11 @@
 package com.example.twitt.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -30,20 +32,18 @@ public class MainUser implements UserDetails{
 
     @Basic
     @NotNull
-    @UniqueElements
     @Size(max = 255)
     @Column(name = "login")
     private String login;
 
     @Basic
     @NotNull
-    @Size(max = 50)
     @Column(name = "password")
     private String password;
 
     @ManyToMany
     @JoinTable(
-            name = "user-roles",
+            name = "user_roles",
             joinColumns = @JoinColumn(
                     name = "fr_user", referencedColumnName = "id"
             ),
@@ -65,9 +65,11 @@ public class MainUser implements UserDetails{
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Photos> photos;
 
     @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(
                 x -> new SimpleGrantedAuthority(x.getAuthority())
