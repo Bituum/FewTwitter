@@ -6,6 +6,8 @@ import com.example.twitt.exception.UsernameIsTakenException;
 import com.example.twitt.repository.RolesRepository;
 import com.example.twitt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -22,29 +24,30 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@PropertySource("classpath:basicIcon.properties")
 public class UserServiceImpl implements CRUDService<MainUser>, UserDetailsService {
     @Autowired
-    private final UserRepository repository;
+    private UserRepository repository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    public UserServiceImpl(UserRepository repository) {
-        this.repository = repository;
-    }
+
+    @Value("${icon}")
+    private String basicUserIcon;
 
     @Autowired
     private RolesRepository rolesRepository;
 
     @Override
     public MainUser addOne(MainUser user) {
-        if(checkLogin(user.getLogin())){
-            throw new UsernameIsTakenException("username "+user.getUsername() + " is already been taken!");
+        if (checkLogin(user.getLogin())) {
+            throw new UsernameIsTakenException("username " + user.getUsername() + " is already been taken!");
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         Set<Roles> roleSet = new HashSet<>();
         roleSet.add(rolesRepository.getById(1));
         user.setRoles(roleSet);
+        user.setImagePath(basicUserIcon);
         repository.save(user);
         return user;
     }

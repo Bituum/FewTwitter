@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
@@ -45,7 +44,7 @@ public class UserController {
 
     @PutMapping("/user/{id}")
     MainUser replaceEmployee(@RequestBody MainUser newEmployee) {
-
+        //TODO special method for put REST cuz its throw USERNAMEISTAKENEXCEPTION!
         return userService.addOne(newEmployee);
     }
 
