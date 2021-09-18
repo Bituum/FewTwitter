@@ -53,9 +53,17 @@ public class MainUser implements UserDetails{
     @JoinColumn(name = "id")
     private UserExtension extension;
 
-    @OneToMany(
-            mappedBy = "users",
-            cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_posts",
+            joinColumns = @JoinColumn(
+                    name = "user_fk", referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "post_fk", referencedColumnName = "id"
+            )
+    )
+
     private List<UserPost> userPostList;
 
     @Column(name = "photos")
@@ -63,7 +71,6 @@ public class MainUser implements UserDetails{
     private String ImagePath;
 
     @Override
-
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(
                 x -> new SimpleGrantedAuthority(x.getAuthority())

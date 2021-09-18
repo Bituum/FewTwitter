@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 @PropertySource("classpath:basicIcon.properties")
-public class UserServiceImpl implements CRUDService<MainUser>, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository repository;
 
@@ -50,6 +50,10 @@ public class UserServiceImpl implements CRUDService<MainUser>, UserDetailsServic
         user.setImagePath(basicUserIcon);
         repository.save(user);
         return user;
+    }
+
+    public MainUser updateOne(MainUser updatedUser) {
+        return repository.save(updatedUser);
     }
 
     @Override

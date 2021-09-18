@@ -24,11 +24,7 @@ public class UserPost {
     @Column(name = "image_path")
     private String ImagePath;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "id",
-            updatable = false,
-            insertable = false
-    )
-    private MainUser users;
+//    @ManyToMany(mappedBy = "userPostList")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    private List<MainUser> users;
 }

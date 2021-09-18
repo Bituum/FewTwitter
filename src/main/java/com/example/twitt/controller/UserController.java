@@ -1,6 +1,7 @@
 package com.example.twitt.controller;
 
 import com.example.twitt.entity.MainUser;
+import com.example.twitt.exception.UsernameIsTakenException;
 import com.example.twitt.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,14 @@ public class UserController {
 
 
     @PostMapping("/user")
-    MainUser newEmployee(@RequestBody MainUser newEmployee) {
-        return userService.addOne(newEmployee);
+    MainUser newUser(@RequestBody MainUser newUser) {
+        try {
+            MainUser user = userService.addOne(newUser);
+            return userService.addOne(user);
+        } catch (UsernameIsTakenException usernameIsTakenException) {
+            usernameIsTakenException.getMessage();
+        }
+        return null;
     }
 
 
@@ -43,13 +50,12 @@ public class UserController {
     }
 
     @PutMapping("/user/{id}")
-    MainUser replaceEmployee(@RequestBody MainUser newEmployee) {
-        //TODO special method for put REST cuz its throw USERNAMEISTAKENEXCEPTION!
-        return userService.addOne(newEmployee);
+    MainUser replaceUser(@RequestBody MainUser user) {
+        return userService.updateOne(user);
     }
 
     @DeleteMapping("/user/{id}")
-    void deleteEmployee(@PathVariable int id) {
+    void deleteUser(@PathVariable int id) {
         userService.deleteOneById(id);
     }
 
