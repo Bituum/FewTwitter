@@ -10,7 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 "com.example.twitt.entity",
                 "com.example.twitt.repository",
                 "com.example.twitt.service",
-                "com.example.twitt.exception"
+                "com.example.twitt.exception",
+                "com.example.twitt.DAO"
         })
 public class TwittApplication {
 

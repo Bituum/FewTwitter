@@ -1,12 +1,8 @@
 package com.example.twitt.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.minidev.json.annotate.JsonIgnore;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -57,19 +53,24 @@ public class MainUser implements UserDetails{
     @JoinColumn(name = "id")
     private UserExtension extension;
 
-    @OneToMany(
-            mappedBy = "users",
-            cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_posts",
+            joinColumns = @JoinColumn(
+                    name = "user_fk", referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "post_fk", referencedColumnName = "id"
+            )
+    )
+
     private List<UserPost> userPostList;
 
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Photos> photos;
+    @Column(name = "photos")
+    @Size(max = 255)
+    private String ImagePath;
 
     @Override
-
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream().map(
                 x -> new SimpleGrantedAuthority(x.getAuthority())
