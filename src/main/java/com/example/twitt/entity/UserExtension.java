@@ -1,5 +1,6 @@
 package com.example.twitt.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,6 +38,9 @@ public class UserExtension {
     @Column(name = "friends")
     private int friends;
 
-    @OneToOne(mappedBy = "extension")
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id")
+    @MapsId
+    @JsonBackReference
     private MainUser user;
 }

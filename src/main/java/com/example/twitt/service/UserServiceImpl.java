@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if(user.isPresent()){
             Set<GrantedAuthority> grantedAuthorities = user.get().getRoles()
                     .stream()
-                    .map(role -> new SimpleGrantedAuthority(role.getRole()))
+                    .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                     .collect(Collectors.toSet());
             return new User(
                     user.get().getLogin(),
