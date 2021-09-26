@@ -7,7 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Table(name = "roles", schema = "public", catalog = "d2rs1nv1iqngad")
@@ -28,6 +27,6 @@ public class Roles implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return getRole();
+        return this.getRole();
     }
 }
