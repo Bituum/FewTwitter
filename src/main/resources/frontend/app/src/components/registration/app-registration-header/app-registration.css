@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+    color: #fff;
+    border: 5px solid #fff;
+    border-radius: 4px;
+    padding: 12px;
+    display: inline-block;
+}
