@@ -24,16 +24,14 @@ class ChoiceWindow extends React.Component {
             <div className="choiceContainer">
                     <div className="reg-btn-container">
                         <div className="rbox">
-                        <p className='regp'>Not register yet?</p>
-                        <input className={this.state.buttonId === 1? "button-reg btn-outline-light" : 
-                        "button1"} onClick={() => this.setButton(1)} value="REGISTER" 
+                        <p className='regp'>A NEW ONE?</p>
+                        <input className="button-reg" onClick={() => this.setButton(1)} value="REGISTRATION" 
                         type="button" ref="button" />
                     </div>
     
                     <div className='rbox'>
-                        <p className='regp'>Have account?</p>
-                        <input className={this.state.buttonId === 2? "button-reg btn-outline-light" : 
-                        "button2"} onClick={() => this.setButton(2)}  value="LOGIN" 
+                        <p className='regp'>HAVE ACCOUNT?</p>
+                        <input className="button-reg" onClick={() => this.setButton(2)}  value="LOGIN" 
                         ref="button1" type="button" />
                     </div>
                     </div>

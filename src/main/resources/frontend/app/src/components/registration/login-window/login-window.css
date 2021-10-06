@@ -1,20 +1,29 @@
 .login-container {
     display: flex;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px;
-    width: 800px;
-    height: 300px;
+    width: 920px;
+    height: 150px;
+    background-color: #fff;
 
+    padding: 20px;
+    border-radius: 10px;
 }
+
+.authLine {
+    display: inline-flex;
+}
+
+.authContent {
+    margin-left: 15%;
+}
+
 .srbtn {
     margin-left: 20%;
     background-color: #fff;
     color: rgb(217, 180, 30);
-    text-align: center;
+    text-align:end;
     font-size: 14px;
-    padding: 10px;
-    width: 150px;
+    padding: 5px;
+    width: auto;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -24,7 +33,8 @@
 }
 
 .srbtn:active {
-    background-color: #3e8e41;
+    background-color: rgb(217, 180, 30);
+    color: #000;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }

@@ -28,7 +28,7 @@ public class UserExtController {
         return userExtensionService.getAll();
     }
 
-    @PutMapping("/extension/{id}")
+    @PutMapping("/extension/")
     public UserExtension editUserExtensionByUserId(@RequestBody UserExtension ext) {
         return userExtensionService.editExt(ext);
     }

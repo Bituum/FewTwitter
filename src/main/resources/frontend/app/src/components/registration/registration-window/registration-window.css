@@ -1,20 +1,40 @@
-.login-container {
-    width: 800px;
-    height: 300px;
+.registration-container {
+    display: flex;
+    width: 920px;
+    height: 150px;
     background-color: #fff;
-    margin-left: 50px;
     padding: 20px;
     border-radius: 10px;
+}
+
+
+.authLine {
+    display: inline-flex;
+}
+
+.authContent {
+    margin-left: 15%;
 }
 
 .srbtn {
     margin-left: 20%;
     background-color: #fff;
     color: rgb(217, 180, 30);
-    text-align: center;
+    text-align:end;
     font-size: 14px;
-    padding: 10px;
-    width: 100px;
+    padding: 5px;
+    width: auto;
     transition: all 0.5s;
     cursor: pointer;
+}
+
+.srbtn:hover {
+    background-color: black;
+}
+
+.srbtn:active {
+    background-color: rgb(217, 180, 30);
+    color: #000;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }

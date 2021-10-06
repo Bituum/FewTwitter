@@ -8,9 +8,15 @@ h1 {
 }
 
 .box {
+    margin-top: 5%;
+	width: 300px;
     color: #fff;
     border: 5px solid #fff;
-    border-radius: 4px;
-    padding: 12px;
+    border-radius: 10px;;
     display: inline-block;
+	transition: all 0.8s;
+}
+
+.box:hover {
+	color: rgb(217, 180, 30);
 }
