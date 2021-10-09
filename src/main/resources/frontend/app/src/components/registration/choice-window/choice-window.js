@@ -1,5 +1,5 @@
-import './choice-window.css';
 import React from 'react';
+import './choice-window.css';
 import RegistrationWindow from '../registration-window/registration-window';
 import LoginWindow from '../login-window/login-window';
 
@@ -39,7 +39,6 @@ class ChoiceWindow extends React.Component {
             <div className="validationForm">
                 {this.state.buttonId === 1 && <RegistrationWindow/>}
                 {this.state.buttonId === 2 && <LoginWindow/>}
-                {this.state.buttonId !== 1  && this.state.buttonId !== 2}
             </div>
             </div>
     

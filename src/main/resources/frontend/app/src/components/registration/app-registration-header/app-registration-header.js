@@ -1,4 +1,5 @@
 import './app-registration.css'
+import React from 'react';
 
 const RegistrationHeader = () => {
     return (

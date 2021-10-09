@@ -1,4 +1,5 @@
 import './login-window.css';
+import React from 'react';
 
 const LoginWindow = () => {
     return (
@@ -15,7 +16,7 @@ const LoginWindow = () => {
                         <input type="password" />
                     </div>
                     </div>
-                    <button type="submit" className='srbtn'>CONTINUE</button>           
+                    <button onClick={event =>  window.location.href='/feed'} className='srbtn'>CONTINUE</button>           
             </div>
         </div>
     );

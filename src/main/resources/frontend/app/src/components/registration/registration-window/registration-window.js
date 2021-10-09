@@ -1,4 +1,6 @@
 import './registration-window.css'
+import React from 'react';
+
 
 const RegistrationWindow = () => {
     return (

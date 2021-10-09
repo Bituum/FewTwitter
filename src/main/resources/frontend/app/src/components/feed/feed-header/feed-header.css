@@ -1,0 +1,23 @@
+header {
+    position: sticky;
+    top: 0;
+    background-color: #000;
+}
+
+.appname {
+    display: grid;
+    justify-content: center;
+    color: #fff;
+    border: 5px solid white;
+    padding-top: 10px;
+    margin: 10px;
+}
+
+#login {
+    transition: all 0.8s;
+}
+
+#login:hover {
+    color: rgb(217, 180, 30);
+    text-decoration:underline;
+}
