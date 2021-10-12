@@ -1,14 +1,15 @@
+
+
 header {
-    position: sticky;
-    top: 0;
-    background-color: #000;
+    grid-column: 1 / 11;
 }
 
 .appname {
-    display: grid;
+    display: flex;
     justify-content: center;
     color: #fff;
     border: 5px solid white;
+    border-radius: 10px;
     padding-top: 10px;
     margin: 10px;
 }

@@ -23,9 +23,9 @@ public class PostController {
         return postService.getAll();
     }
 
-    @GetMapping("user/post/page")
-    List<UserPost> getPage() {
-        return postService.getOnePostPage();
+    @GetMapping("user/post/page/{limit}")
+    List<UserPost> getPage(@PathVariable ("limit") int limit) {
+        return postService.getOnePostPage(limit);
     }
 
 

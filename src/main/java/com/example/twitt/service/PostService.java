@@ -16,7 +16,7 @@ public interface PostService {
 
     UserPost getOneById(int id, int uid);
 
-    List<UserPost> getOnePostPage();
+    List<UserPost> getOnePostPage(int limit);
 
     UserPost editPost(UserPost post, int uid, int id);
 }

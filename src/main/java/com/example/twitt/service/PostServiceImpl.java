@@ -61,8 +61,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<UserPost> getOnePostPage() {
-        Page<UserPost> page = postDao.getPostPage(1);
+    public List<UserPost> getOnePostPage(int limit) {
+        Page<UserPost> page = postDao.getPostPage(limit);
         return page.getContent();
     }
 
