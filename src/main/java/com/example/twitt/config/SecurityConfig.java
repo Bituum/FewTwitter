@@ -1,7 +1,6 @@
 package com.example.twitt.config;
 
 import com.example.twitt.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -28,8 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/")
                 .permitAll()
                 .and()
-                .csrf()
-                .disable();
+                .csrf().disable();
 //                .authorizeRequests()
 //                .antMatchers("/user").hasAuthority("USER")
 //                .anyRequest().authenticated()

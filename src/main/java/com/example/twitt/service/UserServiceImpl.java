@@ -3,6 +3,7 @@ package com.example.twitt.service;
 import com.example.twitt.entity.MainUser;
 import com.example.twitt.entity.Roles;
 import com.example.twitt.exception.UsernameIsTakenException;
+import com.example.twitt.exception.WrongUserLoginOrPasswordException;
 import com.example.twitt.repository.RolesRepository;
 import com.example.twitt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +96,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return null;
     }
 
-    private boolean checkLogin(String login){
+    public MainUser checkUser(MainUser providedUser) {
+        MainUser user = repository.getMainUserByLogin(providedUser.getLogin());
+        if (user != null && bCryptPasswordEncoder
+                .matches(providedUser.getPassword(), user.getPassword())) {
+            return user;
+        } else {
+            throw new WrongUserLoginOrPasswordException("wrong login or password");
+        }
+    }
+
+    private boolean checkLogin(String login) {
         Optional<MainUser> user = repository.findMainUsersByLogin(login);
         return user.isPresent();
     }
