@@ -5,7 +5,7 @@ const FeedHeader = () => {
     return (
         <header>
             <div className="appname">
-                <p id="login">FEW TWITTER APPLICATION</p>
+                <p id="login">bituum technology</p>
             </div>
         </header>
     );

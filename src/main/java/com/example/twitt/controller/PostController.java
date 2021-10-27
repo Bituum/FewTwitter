@@ -18,6 +18,7 @@ public class PostController {
     @Autowired
     private UserServiceImpl userService;
 
+
     @GetMapping("/post/all")
     List<UserPost> all() {
         return postService.getAll();
