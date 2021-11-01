@@ -1,9 +1,9 @@
 .navbarContainer {
     margin: 10px;
     position: sticky;
-    top: 10px;
+    top: 0;
     grid-column: 1 / 3;
-    grid-row: 2 / 4;
+    grid-row: 2 / 3;
 }
 
 .navbarList {

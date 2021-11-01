@@ -1,5 +1,6 @@
 package com.example.twitt.service;
 
+import com.example.twitt.controller.UserController;
 import com.example.twitt.entity.MainUser;
 import com.example.twitt.entity.Roles;
 import com.example.twitt.exception.UsernameIsTakenException;
@@ -22,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository repository;
 
+    private static final Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 

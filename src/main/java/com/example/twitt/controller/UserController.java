@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
+@CrossOrigin
 public class UserController {
     @Autowired
     private final UserServiceImpl userService;
@@ -38,7 +39,9 @@ public class UserController {
     @PostMapping("/user")
     public MainUser newUser(@RequestBody MainUser newUser) {
         try {
-            MainUser user = userService.addOne(newUser);
+            MainUser user = newUser;
+            user.setId(0);
+            MainUser usertmp = userService.addOne(user);
             return userService.addOne(user);
         } catch (UsernameIsTakenException usernameIsTakenException) {
             usernameIsTakenException.getMessage();
@@ -66,6 +69,7 @@ public class UserController {
     public ResponseEntity authentication(@RequestBody MainUser user) {
         try {
             MainUser check = userService.checkUser(user);
+            logger.info("CHECKED!");
             return ResponseEntity.status(HttpStatus.OK).body("OK");
 
         } catch (WrongUserLoginOrPasswordException exception) {

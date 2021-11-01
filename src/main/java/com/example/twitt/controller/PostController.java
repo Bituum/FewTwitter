@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
+@CrossOrigin
 public class PostController {
     private static Logger logger = Logger.getLogger(PostController.class.getName());
     @Autowired
     private PostServiceImpl postService;
     @Autowired
     private UserServiceImpl userService;
-
 
     @GetMapping("/post/all")
     List<UserPost> all() {

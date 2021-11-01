@@ -5,6 +5,7 @@ import FeedNavbar from './feed-navbar/feed-navbar';
 import FeedMain from './feed-main/feed-main';
 
 
+
 const Feed = () => {
     return (
         <div className="feed">

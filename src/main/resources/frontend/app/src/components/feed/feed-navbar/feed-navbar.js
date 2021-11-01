@@ -1,5 +1,6 @@
 import React from "react";
 import './feed-navbar.css';
+import AddNewPost from "../feed-addNewPost/feedAddNewPost";
 
 
 const FeedNavbar = () => {
@@ -12,10 +13,10 @@ const FeedNavbar = () => {
                             <a href="/#">Лента</a>
                         </li>
                         <li className=''>
-                            <a href="/#">Личный кабинет</a>
-                        </li>
-                        <li className=''>
                             <a href="/#">Еще что-то</a>
+                        </li>
+                        <li>
+                            <AddNewPost/>
                         </li>
                     </ul>
                 </nav>
