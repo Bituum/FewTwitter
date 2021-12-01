@@ -3,7 +3,7 @@ create sequence user_id_seq1
 
 alter sequence user_id_seq1 owner to bvqltbigfbndox;
 
-create table photos
+create table if not exists photos
 (
     id          serial
         constraint photos_pk
@@ -11,10 +11,10 @@ create table photos
     "photoPath" varchar(255) default 'https://hajiri.co/uploads/no_image.jpg'::character varying
 );
 
-alter table photos
+alter table if exists photos
     owner to bvqltbigfbndox;
 
-create table "user"
+create table if not exists "user"
 (
     id       integer default nextval('user_id_seq1'::regclass) not null
         constraint user_pk
@@ -26,12 +26,12 @@ create table "user"
             references photos
 );
 
-alter table "user"
+alter table if exists "user"
     owner to bvqltbigfbndox;
 
-alter sequence user_id_seq1 owned by "user".id;
+alter sequence if exists user_id_seq1 owned by "user".id;
 
-create table posts
+create table if not exists posts
 (
     id               serial
         constraint posts_pk
@@ -43,10 +43,10 @@ create table posts
             references "user"
 );
 
-alter table posts
+alter table if exists posts
     owner to bvqltbigfbndox;
 
-create table "userExtension"
+create table if not exists "userExtension"
 (
     id           integer      not null
         constraint userextension_pk
@@ -60,6 +60,6 @@ create table "userExtension"
     friends      integer
 );
 
-alter table "userExtension"
+alter table if exists "userExtension"
     owner to bvqltbigfbndox;
 

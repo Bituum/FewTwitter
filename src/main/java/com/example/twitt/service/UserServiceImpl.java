@@ -1,6 +1,5 @@
 package com.example.twitt.service;
 
-import com.example.twitt.controller.UserController;
 import com.example.twitt.entity.MainUser;
 import com.example.twitt.entity.Roles;
 import com.example.twitt.exception.UsernameIsTakenException;
@@ -62,11 +61,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void deleteOneById(int id) {
+        rolesRepository.deleteUserRolesById(id);
+        rolesRepository.deleteUserPostsById(id);
         repository.deleteById(id);
     }
 
     @Override
     public void deleteOne(MainUser user) {
+        rolesRepository.deleteUserPostsById(user.getId());
+        rolesRepository.deleteUserPostsById(user.getId());
         repository.delete(user);
     }
 

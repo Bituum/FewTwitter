@@ -108,6 +108,15 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <configuration>
+                    <url>jdbc:postgresql://ec2-54-73-147-133.eu-west-1.compute.amazonaws.com/d2rs1nv1iqngad</url>
+                    <user>bvqltbigfbndox</user>
+                    <password>ce112e27f393d52d833f0560d3da364cc00b63191b6366490e7f0e897d99aeca</password>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>1.5.8</version>

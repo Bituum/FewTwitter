@@ -23,5 +23,6 @@ a {
 }
 
 a:hover {
-    color: darkgoldenrod;
+    text-decoration: underline !important;
+    color: rgb(217, 180, 30);
 }
