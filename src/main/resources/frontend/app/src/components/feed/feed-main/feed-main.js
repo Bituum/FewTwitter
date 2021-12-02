@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import './feed-main.css';
 import axios from 'axios';
-import UserContentComponent from "./UserContent/UserContentComponent";
+import ItarebleUserComponent from "./ItarebleUserComponent/ItarebleUserComponent";
 
 
 class FeedMain extends Component {
@@ -34,14 +34,24 @@ class FeedMain extends Component {
 
     }
 
-    ifArrayIsNotEmpty() {
-
-    }
 
     render() {
         const {users} = this.state.users;
         console.log(this.state);
-        const userList = this.state.users;
+        const unsortedUserList = this.state.users;
+
+        function shuffleArray(unsortedUserList) {
+            let i = unsortedUserList.length - 1;
+            for (; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = unsortedUserList[i];
+                unsortedUserList[i] = unsortedUserList[j];
+                unsortedUserList[j] = temp;
+            }
+            return unsortedUserList;
+        }
+
+        const userList = shuffleArray(unsortedUserList);
         return (
             // <div className='mainFeed'>
             //     <div className='modalWindow'>
@@ -76,24 +86,12 @@ class FeedMain extends Component {
             //     </div>
             // </div>
             <div className="mainFeed">
-                {userList.map((user, index) => {
+                {userList.map((user) => {
                     return (
-                        <div key={index}>
-                            <div className="secondFeed" key={user.id}>
-                                <div
-                                    className="secondFeedIteration">{user.userPostList.length > 0 ? user.userPostList.map((post) => {
-                                    {
-                                        return (
-                                            <div className="content">
-                                                <UserContentComponent
-                                                    username={user.login}
-                                                    commentContent={post.commentSection}/>
-                                            </div>
-                                        );
-                                    }
-                                }) : null}</div>
-                            </div>
-                        </div>)
+                        <div>
+                            {user.userPostList.length > 0 ? <ItarebleUserComponent user={user}/> : null}
+                        </div>
+                    )
                 })}
             </div>
         );

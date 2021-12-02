@@ -1,0 +1,48 @@
+.userContent {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    justify-content: end;
+}
+
+.userContent h1 {
+    font-size: 14pt;
+}
+
+.userContent a {
+    color: white;
+    border: solid black;
+    border-radius: 5px;
+    font-size: 16pt;
+    background-color: black;
+    transition: all 0.8s;
+    text-decoration: none !important;
+}
+
+.userContent a:hover {
+    color: rgb(217, 180, 30);
+    text-decoration: underline;
+    border: solid black;
+    border-radius: 5px;
+    font-size: 16pt;
+    background-color: black;
+    transition: all 0.8s;
+}
+
+.metainf {
+    grid-column: 1 / 7;
+
+}
+
+.commentContent {
+    grid-column: 6 / 20;
+    padding: 10px;
+}
+
+.commentSection {
+    grid-column: 2 / 6;
+    grid-row: 2;
+}
+
+#currentUser {
+    color: rgb(217, 180, 30);
+}

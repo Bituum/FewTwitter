@@ -10,34 +10,19 @@
 .mainFeed {
     display: grid;
     grid-auto-columns: auto;
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: min-content;
     grid-column: 3 / 12;
     margin: 10px;
-    background-color: darkcyan;
+    background-color: #ffffff;
+    border: 5px;
+    border-radius: 5px;
 }
 
-.modalWindow {
-    display: grid;
-    grid-auto-rows: 90px;
-    grid-auto-columns: 1090px;
-    grid-auto-flow: dense;
-    height: 300px;
-    grid-gap: 500px;
-
-}
 
 .content {
-    min-width: 100%;
-    height: auto;
-}
-h3 {
-    overflow-wrap: break-word;;
-}
+    max-width: 1202px;
+    word-break: break-word;
 
-.postList {
-    justify-content: left;
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    border-radius: 10px;
+    height: auto;
+    border-bottom: solid black 5px;
 }
