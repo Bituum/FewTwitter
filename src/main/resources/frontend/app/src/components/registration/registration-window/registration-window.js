@@ -45,20 +45,22 @@ class RegistrationWindow extends Component{
     }
     render() {
         return(
-            <div className="login-flex">
-                <div className="login-container">
-
+            <div className="login_flex">
+                <div className="login_container">
                     <div className="authLine">
+                        <h2>Registration</h2>
                         <div className="authContent">
-                            <p>ENTER NEW LOGIN</p>
+                            <p>Enter email</p>
                             <input onChange={this.updateUsername} type="text" />
                         </div>
                         <div className="authContent">
-                            <p>ENTER PASSWORD</p>
+                            <p>Enter password</p>
                             <input onChange={this.updatePassword}  type="password" />
                         </div>
                     </div>
-                    <button type="button" onClick={this.handleSubmit} className='srbtn'>CONTINUE</button>
+                    <div className="btnvalidation">
+                        <button type="button" onClick={this.handleSubmit} className='btnval'>Continue</button>
+                    </div>
                 </div>
             </div>
         );

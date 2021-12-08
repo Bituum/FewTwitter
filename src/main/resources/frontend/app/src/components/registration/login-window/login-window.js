@@ -59,21 +59,23 @@ class LoginWindow extends Component{
 
     render() {
         return (
-            <div className="login-flex">
+            <div className="login_flex">
                 <form>
-                    <div className="login-container">
-
+                    <div className="login_container">
                         <div className="authLine">
+                            <h2>Login</h2>
                             <div className="authContent">
-                                <p>ENTER LOGIN</p>
+                                <p>Enter email</p>
                                 <input type="text" onChange={this.updateUsername}/>
                             </div>
                             <div className="authContent">
-                                <p>ENTER PASSWORD</p>
-                                <input type="text" onChange={this.updatePassword}/>
+                                <p>Enter password</p>
+                                <input type="password" onChange={this.updatePassword}/>
                             </div>
                         </div>
-                        <button type="button" onClick={this.handleSubmit} className='srbtn'>CONTINUE</button>
+                        <div className="btnvalidation">
+                            <button type="button" onClick={this.handleSubmit} className='btnval'>Continue</button>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -20,7 +20,7 @@ public class FileHandlerController {
     private FileServiceImpl fileService;
 
     @PostMapping("/files/upload")
-    public ResponseEntity<ResponseMessage> uplodadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         try {
             message = "File was successfully uploaded";

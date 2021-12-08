@@ -1,40 +1,20 @@
-.registration-container {
-    display: flex;
-    width: 920px;
-    height: 150px;
-    background-color: #fff;
+.login_flex{
     padding: 20px;
-    border-radius: 10px;
+    color: #ffffff;
 }
 
-
-.authLine {
-    display: inline-flex;
+.login_container{
+    border: 3px dashed #950740;
+    padding: 20px;
 }
 
-.authContent {
-    margin-left: 15%;
+.btnvalidation{
+    padding-top: 10px;
 }
 
-.srbtn {
-    margin-left: 20%;
-    background-color: #fff;
-    color: rgb(217, 180, 30);
-    text-align:end;
-    font-size: 14px;
-    padding: 5px;
-    width: auto;
-    transition: all 0.5s;
-    cursor: pointer;
-}
-
-.srbtn:hover {
-    background-color: black;
-}
-
-.srbtn:active {
-    background-color: rgb(217, 180, 30);
-    color: #000;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.btnvalidation button{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #ffffff;
 }

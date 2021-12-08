@@ -1,42 +1,36 @@
-.choiceContainer {
-    display: flex;
-    justify-content: center;
+.authorization_item{
+    grid-area: side;
+    background-color: #1a1a1d;
+
 }
 
-.validationForm {
-    display: flex;
-    justify-content: center;
-    margin-top: 6%;
+.padding_for_box{
+    padding: 25px;
 }
 
-
-.reg-btn-container {
-    border: 5px solid #fff;
-    border-radius: 10px;
-    margin-top: 80px;
-    width: 500px;
-    height: 150px;
-    display: inline-flex;
-    flex-direction: row;
-    background-color: black;
-    justify-content: space-around;
-    padding-left: 15px;   
+.border_for_box{
+    padding: 20px;
+    border: 3px dashed #950740;
 }
 
-.regp {
-    font-size: 10pt;
-    color:#fff;
+.auth_box{
+    color: #ffffff;
 }
 
-.button-reg {
-    font-size: 20pt;
-    border: 0px;
-    background-color: #000;
-    color: #fff;
-    transition: all 0.9s;
+.choice_buttons{
+    padding-top: 10px;
 }
-
-.button-reg:hover {
+.choice_buttons button{
+    margin-right: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
     text-decoration: underline;
-    color: rgb(217, 180, 30);
 }
+
+.validationForm{
+    position: absolute;
+    width: 400px;
+}
+
+

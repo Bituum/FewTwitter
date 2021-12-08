@@ -8,39 +8,41 @@ class ChoiceWindow extends React.Component {
     constructor(){
         super();
         this.state = {
-         buttonId: null
+            buttonId: null
         }
         this.setButton = this.setButton.bind(this);
-      }
-      setButton(id){
+    }
+    setButton(id){
         this.setState({buttonId: id});
-      }
+    }
 
 
     render(){
-        console.log(this.state.buttonId);
         return (
-            <div>
-            <div className="choiceContainer">
-                    <div className="reg-btn-container">
-                        <div className="rbox">
-                        <p className='regp'>A NEW ONE?</p>
-                        <input className="button-reg" onClick={() => this.setButton(1)} value="REGISTRATION" 
-                        type="button" ref="button" />
+            <div className="authorization_item">
+                <div className="padding_for_box">
+                    <div className="border_for_box">
+                        <div className="auth_box">
+                            <h2>Have account?</h2>
+                                <div className="metadata">
+                                    <label htmlFor="email-label">Email</label>
+                                    <input type="text" id="email-label"/>
+                                    <label htmlFor="password-label">Password</label>
+                                    <input type="password" id="password-label"/>
+                                </div>
+                                <div className="choice_buttons">
+                                    <button onClick={() => this.setButton(1)}>Enter</button>
+                                    <button onClick={() => this.setButton(2)}>Registration</button>
+                                </div>
+                        </div>
                     </div>
-    
-                    <div className='rbox'>
-                        <p className='regp'>HAVE ACCOUNT?</p>
-                        <input className="button-reg" onClick={() => this.setButton(2)}  value="LOGIN" 
-                        ref="button1" type="button" />
-                    </div>
-                    </div>
+                </div>
+                <div className="validationForm">
+                    {this.state.buttonId === 2 && <RegistrationWindow/>}
+                    {this.state.buttonId === 1 && <LoginWindow/>}
+                </div>
             </div>
-            <div className="validationForm">
-                {this.state.buttonId === 1 && <RegistrationWindow/>}
-                {this.state.buttonId === 2 && <LoginWindow/>}
-            </div>
-            </div>
+
     
         )};
 }

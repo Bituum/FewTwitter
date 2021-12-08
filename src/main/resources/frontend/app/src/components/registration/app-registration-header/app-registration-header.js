@@ -3,10 +3,12 @@ import React from 'react';
 
 const RegistrationHeader = () => {
     return (
-        <div className="container">
+        <div className="header_item">
+            <marquee behavior="alternate" direction="right" Scrollamount="20">
             <div className='box'>
-                <h1>WELCOME</h1>
+                    <p>bituumTech</p>
             </div>
+            </marquee>
         </div>
     );
 }
