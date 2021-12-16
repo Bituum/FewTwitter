@@ -1,5 +1,6 @@
 package com.example.twitt.controller;
 
+import com.example.twitt.config.jwt.JwtTokenUtil;
 import com.example.twitt.entity.MainUser;
 import com.example.twitt.exception.UsernameIsTakenException;
 import com.example.twitt.exception.WrongUserLoginOrPasswordException;
@@ -9,20 +10,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @RestController
 @CrossOrigin
 public class UserController {
-    @Autowired
+
     private final UserServiceImpl userService;
+    private final JwtTokenUtil tokenUtil;
 
     private static final Logger logger = Logger.getLogger(UserController.class.getName());
+
     @Autowired
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserServiceImpl userService, JwtTokenUtil tokenUtil) {
         this.userService = userService;
+        this.tokenUtil = tokenUtil;
     }
+
 
     @CrossOrigin
     @GetMapping("/user")
@@ -70,7 +77,11 @@ public class UserController {
         try {
             MainUser check = userService.checkUser(user);
             logger.info("CHECKED!");
-            return ResponseEntity.status(HttpStatus.OK).body("OK");
+            String token = tokenUtil.create(user);
+            Map<Object, Object> response = new HashMap<>();
+            response.put("username", user.getUsername());
+            response.put("token", token);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
 
         } catch (WrongUserLoginOrPasswordException exception) {
             exception.getMessage();
