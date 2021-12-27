@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
@@ -30,22 +29,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .cors()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/")
+//                .permitAll()
+//                .antMatchers("/auth/user")
+//                .permitAll()
+//                .antMatchers("/user")
+//                .permitAll()
+//                .antMatchers("/extension/{id}")
+//                .hasRole("USER")
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .apply(new JwtConfigurer(jwtUtil));
+
+                .cors()
                 .and()
+                .csrf()
+                .disable()
                 .authorizeRequests()
                 .antMatchers("/")
                 .permitAll()
-                .antMatchers("/auth/user")
-                .permitAll()
-                .antMatchers("/user")
-                .permitAll()
-                .antMatchers("/extension/{id}")
-                .hasRole("USER")
-                .anyRequest()
-                .authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtUtil));
+
     }
 
     @Bean

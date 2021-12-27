@@ -19,6 +19,7 @@ public class PostController {
     @Autowired
     private UserServiceImpl userService;
 
+    @CrossOrigin
     @GetMapping("/post/all")
     List<UserPost> all() {
         return postService.getAll();

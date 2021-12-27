@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080/")
 public class UserController {
 
     private final UserServiceImpl userService;
@@ -31,7 +31,7 @@ public class UserController {
     }
 
 
-    @CrossOrigin
+
     @GetMapping("/user")
     public List<MainUser> all() {
         List<MainUser> users = userService.getAll();
@@ -42,7 +42,6 @@ public class UserController {
         return userService.getAll();
     }
 
-    @CrossOrigin
     @PostMapping("/user")
     public MainUser newUser(@RequestBody MainUser newUser) {
         try {
@@ -76,7 +75,7 @@ public class UserController {
     public ResponseEntity authentication(@RequestBody MainUser user) {
         try {
             MainUser check = userService.checkUser(user);
-            logger.info("CHECKED!");
+
             String token = tokenUtil.create(user);
             Map<Object, Object> response = new HashMap<>();
             response.put("username", user.getUsername());
@@ -88,6 +87,22 @@ public class UserController {
             logger.info("ERROR WRONG PERSON!");
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body("WRONG USERNAME OR PASSWORD ERROR");
+        }
+    }
+
+    @CrossOrigin
+    @GetMapping("/check")
+    public ResponseEntity check(@RequestParam String token) {
+        try {
+            logger.info("jwt token = " + token);
+            logger.info("CHECKING TOKEN");
+            tokenUtil.validateToken(token);
+            logger.info("CHECKED!");
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body("OK");
+        } catch (IllegalArgumentException jwtException) {
+            logger.info("CHECKING TOKEN FAILED");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("JWT IS EXPIRED");
         }
     }
 
