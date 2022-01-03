@@ -98,7 +98,11 @@ public class UserController {
             logger.info("CHECKING TOKEN");
             tokenUtil.validateToken(token);
             logger.info("CHECKED!");
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body("OK");
+
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(userService
+                    .getIdByUsername(
+                            tokenUtil.getUsername(token)
+                    ));
         } catch (IllegalArgumentException jwtException) {
             logger.info("CHECKING TOKEN FAILED");
             return ResponseEntity.status(HttpStatus.FORBIDDEN)

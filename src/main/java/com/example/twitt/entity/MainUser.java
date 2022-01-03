@@ -39,7 +39,7 @@ public class MainUser implements UserDetails{
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
@@ -57,7 +57,7 @@ public class MainUser implements UserDetails{
     @JoinColumn(name = "id")
     private UserExtension extension;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_posts",
             joinColumns = @JoinColumn(

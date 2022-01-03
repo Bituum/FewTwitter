@@ -24,7 +24,7 @@ public class JwtTokenUtil {
     @Value("${jwt.token.expired}")
     private long lifeTime;
 
-    private Date now;
+    private Date now = new Date();
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -67,7 +67,7 @@ public class JwtTokenUtil {
     public String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
-            return bearerToken.substring(7, bearerToken.length());
+            return bearerToken.substring(7);
         }
         return null;
     }
@@ -76,10 +76,7 @@ public class JwtTokenUtil {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 
-            if (claims.getBody().getExpiration().before(now)) {
-                return false;
-            }
-            return true;
+            return !claims.getBody().getExpiration().before(now);
         } catch (JwtException | IllegalArgumentException exception) {
             throw new IllegalArgumentException("Jwt token is expired!");
         }

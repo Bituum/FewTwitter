@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             return new User(
                     user.get().getLogin(),
                     user.get().getPassword(),
-                    user.get().getAuthorities()
+                    grantedAuthorities
             );
         }
         return null;
@@ -113,7 +113,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     private boolean checkLogin(String login) {
-        Optional<MainUser> user = repository.findMainUsersByLogin(login);
-        return user.isPresent();
+        return repository.findMainUsersByLogin(login).isPresent();
+    }
+
+    public int getIdByUsername(String username) {
+        MainUser user = repository.findMainUsersByLogin(username).orElseThrow(
+                () -> new IllegalArgumentException("USER NOT FOUND")
+        );
+        return user.getId();
     }
 }
